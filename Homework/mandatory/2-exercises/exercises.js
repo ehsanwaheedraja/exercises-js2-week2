@@ -15,6 +15,14 @@
  */
 function exerciseOne(arrayOfPeople) {
   let content = document.querySelector("#content");
+  for (let i = 0; i < arrayOfPeople.length; i++) {
+    var headingsAdd = document.createElement("h1");
+    headingsAdd.innerText = arrayOfPeople[i].name;
+    content.appendChild(headingsAdd);
+    var headingsAdd2 = document.createElement("h2");
+    headingsAdd2.innerText = arrayOfPeople[i].job;
+    content.appendChild(headingsAdd2);
+  }
 }
 
 /**
@@ -26,6 +34,15 @@ function exerciseOne(arrayOfPeople) {
  */
 function exerciseTwo(shopping) {
   //Write your code in here
+  let content = document.querySelector("#content");
+  var unorderedList = document.createElement("ul");
+  content.appendChild(unorderedList);
+  let content1 = document.querySelector("#content ul");
+  for (let i = 0; i < shopping.length; i++) {
+    var listItems = document.createElement("li");
+    listItems.innerText = shopping[i];
+    content1.appendChild(listItems);
+  }
 }
 
 /**
@@ -59,6 +76,30 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
   //Write your code in here
+  let content = document.querySelector("ul");
+  books[0].cover =
+    "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTQEZhxiVNZAeKa1dGfEzKwLXiyY_78i08Gfhwn53k-JYin9TDO";
+  books[1].cover =
+    "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTQEZhxiVNZAeKa1dGfEzKwLXiyY_78i08Gfhwn53k-JYin9TDO";
+  books[2].cover =
+    "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTQEZhxiVNZAeKa1dGfEzKwLXiyY_78i08Gfhwn53k-JYin9TDO";
+
+  for (let i = 0; i < books.length; i++) {
+    var listItems = document.createElement("li");
+    content.appendChild(listItems);
+    var paragraph = document.createElement("p");
+    paragraph.innerText = books[i].title + "-" + books[i].author;
+    listItems.appendChild(paragraph);
+    var imageAdd = document.createElement("img");
+    imageAdd.setAttribute("src", books[i].cover);
+    imageAdd.setAttribute("width", "100px");
+    listItems.appendChild(imageAdd);
+    if (books[i].alreadyRead) {
+      listItems.style.backgroundColor = "green";
+    } else {
+      listItems.style.backgroundColor = "red";
+    }
+  }
 }
 
 //
@@ -74,7 +115,7 @@ function exerciseThree(books) {
 let people = [
   { name: "Chris", job: "Teacher" },
   { name: "Joanna", job: "Student" },
-  { name: "Boris", job: "Prime Minister" }
+  { name: "Boris", job: "Prime Minister" },
 ];
 
 exerciseOne(people);
@@ -87,18 +128,18 @@ const books = [
   {
     title: "The Design of Everyday Things",
     author: "Don Norman",
-    alreadyRead: false
+    alreadyRead: false,
   },
   {
     title: "The Most Human Human",
     author: "Brian Christian",
-    alreadyRead: true
+    alreadyRead: true,
   },
   {
     title: "The Pragmatic Programmer",
     author: "Andrew Hunt",
-    alreadyRead: true
-  }
+    alreadyRead: true,
+  },
 ];
 
 exerciseThree(books);
